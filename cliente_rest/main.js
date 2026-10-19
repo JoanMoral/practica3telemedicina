@@ -1,3 +1,4 @@
+
 console.log("main cargado");
 
 
@@ -294,11 +295,7 @@ function actualizarModelos(){
 var seccionActual = "login";
 var gestor_identificador = "";
 
-    /*function entrar(){
-        var usuario = document.getElementById("usuario").value;
     
-    cambiarSeccion("menu-principal");
-    }*/
     var modelos_lista =  [];
     var ubis_lista = [];
     var categorias_lista = [];
@@ -806,9 +803,14 @@ function esTextoValido(t){
 }
 
 function esFechaValida(f){
-    if(typeof f !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(f)) return false;
+    if(typeof f !== "string") return false;
+    // Si viene con hora tipo ISO (ej: 2026-02-18T07:00:00.000Z), nos quedamos solo con la fecha YYYY-MM-DD
+    if(f.includes("T")) {
+        f = f.split("T")[0];
+    }
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(f)) return false;
     var d = new Date(f + "T00:00:00Z");
-    return !isNaN(d.getTime()) && d.toISOString().slice(0, 10) === f;   // descarta 2026-02-31
+    return !isNaN(d.getTime()) && d.toISOString().slice(0, 10) === f;
 }
 
 function esAreaValida(id){
@@ -1000,3 +1002,4 @@ function cargarRanking(){
         });
     });
 }
+
