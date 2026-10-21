@@ -1038,3 +1038,17 @@ function cargarRanking(){
     });
 }
 
+function contarPostsArea(){
+    var id = document.getElementById("id_area").value;
+    if(!esAreaValida(id)){
+        alert("Introduce un id_area válido (1-18)");
+        return;
+    }
+    rest.get(URL_MINISTERIO, function(estado, respuesta){
+        var veces = 0;
+        for(var i = 0; i < respuesta.length; i++){
+            if(respuesta[i].id_area == id) veces++;
+        }
+        alert("Se ha hecho POST con id_area " + id + " " + veces + " veces");
+    });
+}
