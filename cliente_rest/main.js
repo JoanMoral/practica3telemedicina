@@ -959,6 +959,7 @@ function nombreSolo(reservas,callback){
     }
     callback(contador); 
 }
+    
 
 // ---------- Envío ----------
 function enviarMinisterio(){
@@ -1005,14 +1006,14 @@ function cargarRanking(){
         console.log("Respuesta del Ministerio:", respuesta);
 
         var datos = filtrarDatosMinisterio(respuesta);
-        
+        /*
         var reservas = aplanar(datos);
         document.getElementById("total_reservas").textContent = reservas.length;
 
         nombreSolo(reservas, function(n) {
             document.getElementById("sanitarios_distintos").textContent = n;
         });
-        
+        */
 
         var conteo = {};
         datos.forEach(function(e){
