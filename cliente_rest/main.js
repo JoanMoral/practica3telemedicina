@@ -840,6 +840,15 @@ function esRegistroValido(r){
     return true;
 }
 
+
+function normalizarRespuesta(respuesta){
+    return respuesta.map(function(e){
+        return { id_area: Number(e.id_area), datos: e.datos };
+    });
+}
+
+
+/*
 // Acepta [{id_area, datos:[...]}, ...]  o  {"1":[...], "2":[...]}
 function normalizarRespuesta(respuesta){
     var salida = [];
@@ -855,6 +864,7 @@ function normalizarRespuesta(respuesta){
     }
     return salida;
 }
+    */
 
 // Devuelve solo lo bueno, sin duplicados
 function filtrarDatosMinisterio(respuesta){
