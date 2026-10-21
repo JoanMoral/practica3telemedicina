@@ -969,6 +969,18 @@ function enviarMinisterio(){
     }
 
     recogerReservas(function(reservas){
+        console.log("Reservas recogidas:", reservas.length, reservas[0]);
+        reservas.slice(0, 3).forEach(function(r){
+            console.log({
+                nombre: esTextoValido(r.nombre),
+                apellidos: esTextoValido(r.apellidos),
+                categoria: esTextoValido(categoriaDe(r)),
+                horas: r.horas_estimadas,
+                fec_pet: esFechaValida(r.fec_pet),
+                fec_ini: r.fec_ini,
+                fecha_fin: r.fecha_fin
+            });
+        });
         if(reservas === null){
             alert("Error al obtener los recursos");
             return;
