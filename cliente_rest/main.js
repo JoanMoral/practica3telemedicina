@@ -925,6 +925,9 @@ function recogerReservas(callback){
         recursos.forEach(function(rec){
             rest.get("/api/recursos/" + rec.id + "/reservas", function(estado, reservas){
                 if(estado == 200 && Array.isArray(reservas)){
+                    console.log("rec:", rec);
+                    console.log("modelo de ejemplo:", modelos_lista[0]);
+                    console.log("categoria de ejemplo:", categorias_lista[0]);
                     var categoria = nombreCategoria(rec.modelo);
                     reservas.forEach(function(r){
                         todas.push({
