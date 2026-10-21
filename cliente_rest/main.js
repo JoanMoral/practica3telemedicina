@@ -881,7 +881,7 @@ function filtrarDatosMinisterio(respuesta){
     return limpio;
 }
 
-// ---------- Recogida de reservas (solo servicios existentes) ----------
+
 function formatearFecha(f){
     if(f === null || f === undefined || f === "") return null;
     var d = new Date(f);
