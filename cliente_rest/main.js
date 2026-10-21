@@ -819,7 +819,10 @@ function esAreaValida(id){
 
 // Acepta la clave con o sin tilde al leer datos de otros
 function categoriaDe(r){
-    return r["categor\u00eda"] !== undefined ? r["categor\u00eda"] : r["categoria"];
+    var clave = Object.keys(r).find(function(k){
+        return k.indexOf("categor") === 0;
+    });
+    return clave !== undefined ? r[clave] : undefined;
 }
 
 // fec_ini y fecha_fin pueden ser null (reserva aún sin comenzar/terminar)
