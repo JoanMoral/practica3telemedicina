@@ -881,16 +881,6 @@ function filtrarDatosMinisterio(respuesta){
     return limpio;
 }
 
-function aplanar(areas) {
-    var reservas = [];
-    areas.forEach(function(a) {
-        a.datos.forEach(function(r) {
-            reservas.push(Object.assign({ id_area: a.id_area }, r));
-        });
-    });
-    return reservas;
-}
-
 // ---------- Recogida de reservas (solo servicios existentes) ----------
 function formatearFecha(f){
     if(f === null || f === undefined || f === "") return null;
@@ -945,23 +935,8 @@ function recogerReservas(callback){
     });
 }
 
-function nombreSolo(reservas,callback){
-    var contador = 0;
-    var vistas = {};
-    for(var i = 0; i < reservas.length; i++){
-        var nombre = reservas[i].nombre;
-        var apellidos = reservas[i].apellidos;
-        var clave = nombre+"|"+apellidos;
-        if(!vistas[clave]){
-            vistas[clave] = true;
-            contador++;
-        }
-    }
-    callback(contador); 
-}
-    
+   
 
-// ---------- Envío ----------
 function enviarMinisterio(){
     if(modelos_lista.length == 0 || categorias_lista.length == 0){
         alert("Aún no se han cargado los modelos y categorías, inténtalo de nuevo");
@@ -1006,14 +981,7 @@ function cargarRanking(){
         console.log("Respuesta del Ministerio:", respuesta);
 
         var datos = filtrarDatosMinisterio(respuesta);
-        /*
-        var reservas = aplanar(datos);
-        document.getElementById("total_reservas").textContent = reservas.length;
-
-        nombreSolo(reservas, function(n) {
-            document.getElementById("sanitarios_distintos").textContent = n;
-        });
-        */
+        
 
         var conteo = {};
         datos.forEach(function(e){
