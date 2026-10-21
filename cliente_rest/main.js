@@ -1052,3 +1052,20 @@ function contarPostsArea(){
         alert("Se ha hecho POST con id_area " + id + " " + veces + " veces");
     });
 }
+
+
+
+function contarFinalizadas(){
+    rest.get(URL_MINISTERIO, function(estado, respuesta){
+        var total = 0;
+        for(var i = 0; i < respuesta.length; i++){
+            if(respuesta[i].id_area == ID_AREA){
+                var datos = respuesta[i].datos;
+                for(var j = 0; j < datos.length; j++){
+                    if(datos[j].fecha_fin != null) total++;
+                }
+            }
+        }
+        alert("Reservas finalizadas de mi área en el Ministerio: " + total);
+    });
+}
