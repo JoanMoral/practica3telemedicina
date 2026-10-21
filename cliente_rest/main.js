@@ -819,10 +819,7 @@ function esAreaValida(id){
 
 // Acepta la clave con o sin tilde al leer datos de otros
 function categoriaDe(r){
-    var clave = Object.keys(r).find(function(k){
-        return k.indexOf("categor") === 0;
-    });
-    return clave !== undefined ? r[clave] : undefined;
+    return r["categor\u00eda"] || r.categoria;
 }
 
 // fec_ini y fecha_fin pueden ser null (reserva aún sin comenzar/terminar)
@@ -954,7 +951,7 @@ function nombreSolo(reservas,callback){
     for(var i = 0; i < reservas.length; i++){
         var nombre = reservas[i].nombre;
         var apellidos = reservas[i].apellidos;
-        var clave = nombre+apellidos;
+        var clave = nombre+"|"+apellidos;
         if(!vistas[clave]){
             vistas[clave] = true;
             contador++;
