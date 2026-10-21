@@ -930,7 +930,7 @@ function recogerReservas(callback){
                         todas.push({
                             nombre: r.sanitario_nombre,
                             apellidos: r.sanitario_apellidos,
-                            categoría: categoria,
+                            "categoría": categoria,
                             horas_estimadas: r.horas_estimadas,
                             fec_pet: formatearFecha(r.fecha_peticion),
                             fec_ini: formatearFecha(r.fecha_inicio),
