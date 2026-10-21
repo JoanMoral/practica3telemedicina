@@ -903,9 +903,16 @@ function formatearFecha(f){
 
 function nombreCategoria(idModelo){
     var m = modelos_lista.find(function(x){ return x.id == idModelo; });
-    if(!m) return null;
+    if(!m){
+        console.log("Modelo no encontrado:", idModelo, "ids disponibles:", modelos_lista.map(function(x){ return x.id; }));
+        return null;
+    }
     var c = categorias_lista.find(function(x){ return x.id == m.categoria; });
-    return c ? c.nombre : null;
+    if(!c){
+        console.log("Categoría no encontrada para el modelo:", m, "ids disponibles:", categorias_lista.map(function(x){ return x.id; }));
+        return null;
+    }
+    return c.nombre;
 }
 
 function recogerReservas(callback){
