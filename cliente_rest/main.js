@@ -884,7 +884,9 @@ function filtrarDatosMinisterio(respuesta){
 function aplanar(areas) {
     var reservas = [];
     areas.forEach(function(a) {
-        a.datos.forEach(function(r) { reservas.push(r); });
+        a.datos.forEach(function(r) {
+            reservas.push(Object.assign({ id_area: a.id_area }, r));
+        });
     });
     return reservas;
 }
@@ -928,7 +930,7 @@ function recogerReservas(callback){
                         todas.push({
                             nombre: r.sanitario_nombre,
                             apellidos: r.sanitario_apellidos,
-                            "categoria": categoria,
+                            categoría: categoria,
                             horas_estimadas: r.horas_estimadas,
                             fec_pet: formatearFecha(r.fecha_peticion),
                             fec_ini: formatearFecha(r.fecha_inicio),
@@ -952,7 +954,7 @@ function nombreSolo(reservas,callback){
         var clave = nombre+apellidos;
         if(!vistas[clave]){
             vistas[clave] = true;
-            continue;
+            contador++;
         }
     }
     callback(contador); 
