@@ -1011,7 +1011,7 @@ function contarPostsArea(){
         for(var i = 0; i < respuesta.length; i++){
             if(respuesta[i].id_area == id) veces++;
         }
-        alert("Se ha hecho POST con id_area " + id + " " + veces + " veces");
+        alert("Se ha hecho POST del area " + nombre + " " + veces + " veces");
     });
 }
 
