@@ -944,7 +944,7 @@ function recogerReservas(callback){
         });
     });
 }
-/*
+
 function nombreSolo(reservas,callback){
     var contador = 0;
     var vistas = {};
@@ -959,7 +959,7 @@ function nombreSolo(reservas,callback){
     }
     callback(contador); 
 }
-*/
+
 // ---------- Envío ----------
 function enviarMinisterio(){
     if(modelos_lista.length == 0 || categorias_lista.length == 0){
@@ -1005,14 +1005,14 @@ function cargarRanking(){
         console.log("Respuesta del Ministerio:", respuesta);
 
         var datos = filtrarDatosMinisterio(respuesta);
-        /*
+        
         var reservas = aplanar(datos);
         document.getElementById("total_reservas").textContent = reservas.length;
 
         nombreSolo(reservas, function(n) {
             document.getElementById("sanitarios_distintos").textContent = n;
         });
-        */
+        
 
         var conteo = {};
         datos.forEach(function(e){
