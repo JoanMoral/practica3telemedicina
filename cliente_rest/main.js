@@ -1040,7 +1040,7 @@ function cargarRanking(){
 
 function contarPostsArea(){
     var id = document.getElementById("id_area").value;
-    if(!esAreaValida(id)){
+    if(!esAreaValida(Number(id))){
         alert("Introduce un id_area válido (1-18)");
         return;
     }
