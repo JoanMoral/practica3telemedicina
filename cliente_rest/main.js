@@ -1001,6 +1001,7 @@ function cargarRanking(){
 
 function contarPostsArea(){
     var id = document.getElementById("id_area").value;
+    var nombre = AREAS[Number(id)];
     if(!esAreaValida(Number(id))){
         alert("Introduce un id_area válido (1-18)");
         return;
