@@ -906,16 +906,9 @@ function formatearFecha(f){
 
 function nombreCategoria(idModelo){
     var m = modelos_lista.find(function(x){ return x.id == idModelo; });
-    if(!m){
-        console.log("Modelo no encontrado:", idModelo, "ids disponibles:", modelos_lista.map(function(x){ return x.id; }));
-        return null;
-    }
+    if(!m) return null;
     var c = categorias_lista.find(function(x){ return x.id == m.categoria; });
-    if(!c){
-        console.log("Categoría no encontrada para el modelo:", m, "ids disponibles:", categorias_lista.map(function(x){ return x.id; }));
-        return null;
-    }
-    return c.nombre;
+    return c ? c.nombre : null;
 }
 
 function recogerReservas(callback){
@@ -935,9 +928,6 @@ function recogerReservas(callback){
         recursos.forEach(function(rec){
             rest.get("/api/recursos/" + rec.id + "/reservas", function(estado, reservas){
                 if(estado == 200 && Array.isArray(reservas)){
-                    console.log("rec:", rec);
-                    console.log("modelo de ejemplo:", modelos_lista[0]);
-                    console.log("categoria de ejemplo:", categorias_lista[0]);
                     var categoria = nombreCategoria(rec.modelo);
                     reservas.forEach(function(r){
                         todas.push({
@@ -982,18 +972,6 @@ function enviarMinisterio(){
     }
 
     recogerReservas(function(reservas){
-        console.log("Reservas recogidas:", reservas.length, reservas[0]);
-        reservas.slice(0, 3).forEach(function(r){
-            console.log({
-                nombre: esTextoValido(r.nombre),
-                apellidos: esTextoValido(r.apellidos),
-                categoria: esTextoValido(categoriaDe(r)),
-                horas: r.horas_estimadas,
-                fec_pet: esFechaValida(r.fec_pet),
-                fec_ini: r.fec_ini,
-                fecha_fin: r.fecha_fin
-            });
-        });
         if(reservas === null){
             alert("Error al obtener los recursos");
             return;
