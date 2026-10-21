@@ -840,31 +840,14 @@ function esRegistroValido(r){
     return true;
 }
 
-/*
+
 function normalizarRespuesta(respuesta){
     return respuesta.map(function(e){
         return { id_area: Number(e.id_area), datos: e.datos };
     });
 }
-*/
 
 
-// Acepta [{id_area, datos:[...]}, ...]  o  {"1":[...], "2":[...]}
-function normalizarRespuesta(respuesta){
-    var salida = [];
-    if(Array.isArray(respuesta)){
-        respuesta.forEach(function(e){
-            if(e && typeof e === "object") salida.push({ id_area: Number(e.id_area), datos: e.datos });
-        });
-    }else if(respuesta && typeof respuesta === "object"){
-        Object.keys(respuesta).forEach(function(k){
-            var v = respuesta[k];
-            salida.push({ id_area: Number(k), datos: Array.isArray(v) ? v : (v && v.datos) });
-        });
-    }
-    return salida;
-}
-    
 
 // Devuelve solo lo bueno, sin duplicados
 function filtrarDatosMinisterio(respuesta){
